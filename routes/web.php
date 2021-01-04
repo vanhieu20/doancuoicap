@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Course;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,14 @@ use App\Http\Controllers\DashboardController;
 //-------------------ADMIN-------------------------
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/',[DashboardController::class, 'index']); // trang chur admin
-    Route::get('/course',[CourseController::class, 'index']); // trang danh muc khoa hoc admin
+    Route::group(['prefix' => 'course'], function () {
+        Route::get('/',[CourseController::class, 'index'])->name('course'); // trang danh muc khoa hoc admin
+        Route::get('/create',[CourseController::class, 'create'])->name('course.create');
+        Route::post('/create',[CourseController::class, 'store']);
+        Route::get('/{update}/edit',[CourseController::class, 'update'])->name('course.update');
+        Route::post('/{update}/edit',[CourseController::class, 'edit']);
+        Route::get('/{update}',[CourseController::class, 'destroy'])->name('course.destroy');
+    });
 });
 
 

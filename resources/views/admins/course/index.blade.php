@@ -1,8 +1,6 @@
 @extends('admins.layouts.master')
 @section('content')
 <div class="wrapper">
-
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -24,12 +22,13 @@
 
     <section class="content">
       <div class="container-fluid">
+          @include('admins.layouts.notification')
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Danh sách </h3>
-                <h3 class="card-title btn btn-info float-right">Thêm mới</h3>
+                <h3 class="card-title btn btn-info float-right"><a href="{{ route('course.create')}}">Thêm mới</a></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -46,8 +45,8 @@
                             <td tabindex="0" class="sorting_1">{{ $key + 1 }}</td>
                             <td>{{ $row->name }}</td>
                             <td>
-                                <a href="" class="btn btn-success"><i class="fa fa-edit">Sửa</i></a>
-                                <a href="" class="btn btn-danger"><i class="fa fa-del">Xóa</i></a>
+                                <a href="{{ route('course.update',$row->id) }}" class="btn btn-success"><i class="fa fa-edit"> Sửa</i></a>
+                                <button type="button" class="btn btn-danger del_course" data-toggle="modal" data-id="{{ $row->id }}" data-target="#modal-danger">Xóa</button>
                             </td>
                         </tr>
                     @endforeach
@@ -61,23 +60,73 @@
     </section>
   </div>
 </div>
+
 @stop
-@section('sctipt')
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
+    $(".del_course").click(function(){
+        id = $(this).data('id');
+        Swal.fire({
+            title: 'Bạn có chắc chắn?',
+            text: 'Bạn sẽ không thể hoàn nguyên điều này!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Vâng, xóa nó đi!',
+            cancelButtonText: 'Hủy',
+        }).then((result) => {
+            if (result.value == true) {
+                $.ajax({
+                    url: '/admin/course/' + id,
+                    type: 'get',
+                    data: {
+                        'id': id,
+                    },
+                    success: function(res) {
+                        if (res.warning) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Thông báo',
+                                text: res.warning,
+                                confirmButtonText: 'Xác nhận',
+                            });
+                        }
+                        if (res.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Thông báo',
+                                text: res.success,
+                                confirmButtonText: 'Xác nhận',
+                            }).then((result) => {
+                                location.reload();
+                            });
+                        }
+                    }
+                });
+            }
+        });
     });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
+
+//   $(function () {
+//     $("#example1").DataTable({
+//       "responsive": true,
+//       "autoWidth": false,
+//     });
+//     $('#example2').DataTable({
+//       "paging": true,
+//       "lengthChange": false,
+//       "searching": false,
+//       "ordering": true,
+//       "info": true,
+//       "autoWidth": false,
+//       "responsive": true,
+//     });
+//   });
+
 </script>
 @stop
+
