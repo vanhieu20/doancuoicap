@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="backend/employees">Danh mục</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('course') }}">Danh mục khóa học</a></li>
                             <li class="breadcrumb-item active">Thêm mới</li>
                         </ol>
                     </div>
@@ -33,7 +33,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Tên danh mục</label>
-                                    <input type="text" class="form-control" name="name" id="name_course" placeholder="Enter email">
+                                    <input type="text" class="form-control" name="name" id="name_course" placeholder="Nhập tên danh mục khóa học">
                                 </div>
                             </div>
                             <div class="card-footer">

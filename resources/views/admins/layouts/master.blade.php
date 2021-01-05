@@ -30,7 +30,9 @@
   <link rel="stylesheet" href="{{ asset('themes/admins/plugins/summernote/summernote-bs4.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  
+
+  <link rel="stylesheet" href="{{ asset('themes/admins/css/style.css') }}">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -89,6 +91,8 @@
 <script src="{{ asset('themes/admins/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('themes/admins/dist/js/demo.js') }}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset('themes/admins/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 
 <!-- DataTables -->
 <script src="{{ asset('themes/admins/plugins/datatables/jquery.dataTables.min.js') }}"></script>
@@ -96,5 +100,22 @@
 <script src="{{ asset('themes/admins/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('themes/admins/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
 @yield('script')
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+</script>
 </body>
 </html>

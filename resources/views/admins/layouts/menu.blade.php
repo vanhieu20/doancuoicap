@@ -6,25 +6,21 @@
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 
-    <!-- Sidebar -->
     <div class="sidebar">
 
-      <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="/admin" class="nav-link {{ \Request::route()->getName() =='dashboard' ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Dashboard
+                Bảng điều khiển
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="{{ route('course') }}" class="nav-link">
+            <a href="{{ route('course') }}" class="nav-link {{ \Request::route()->getName() =='course' ? 'active' : '' }}">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Danh mục khóa học
@@ -33,7 +29,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="{{ route('subject') }}" class="nav-link {{ \Request::route()->getName() =='subject' ? 'active' : '' }}">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Khóa học
@@ -42,7 +38,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="{{ route('listRegis') }}" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Danh sách đăng kí

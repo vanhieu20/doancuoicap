@@ -20,4 +20,8 @@ class Subject extends Model
         'date_start',
         'date_end',
     ];
+
+    public function course(){
+    	return $this->belongsTo(Course::class,'counrses_id');
+    }
 }

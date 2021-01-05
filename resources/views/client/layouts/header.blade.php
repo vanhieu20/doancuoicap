@@ -18,6 +18,11 @@
                     </li>
                     <li><a href="./schedule.html">Mở rộng</a></li>
                     <li><a href="./blog.html">Giới thiệu</a></li>
+                    @if (Auth::user())
+                        <li>
+                            <a href="{{ route('dashboard') }}">Admin</a>
+                        </li>
+                    @endif
                 </ul>
             </nav>
             <a href="#" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Khóa học đã đăng ký</a>

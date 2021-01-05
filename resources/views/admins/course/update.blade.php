@@ -12,8 +12,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="backend/employees">Danh mục</a></li>
-                            <li class="breadcrumb-item active">Thêm mới</li>
+                            <li class="breadcrumb-item"><a href="{{ route('course') }}">Danh mục khóa học</a></li>
+                            <li class="breadcrumb-item active">Cập nhật</li>
                         </ol>
                     </div>
                 </div>
