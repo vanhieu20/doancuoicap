@@ -8,16 +8,16 @@
         <div class="nav-menu">
             <nav class="mainmenu mobile-menu">
                 <ul>
-                    <li class="active"><a href="./index.html">Trang chủ</a></li>
-                    <li><a href="./speaker.html">Khóa học</a>
+                    <li class="active"><a href="/">Trang chủ</a></li>
+                    <li><a href="{{ route('Course') }}">Khóa học</a>
                         <ul class="dropdown">
-                            <li><a href="#">Khoa học tự nhiên</a></li>
-                            <li><a href="#">Khóa học xã hội</a></li>
-                            <li><a href="#">Tiếng anh</a></li>
+                            <li><a href="{{ route('Course') }}">Khoa học tự nhiên</a></li>
+                            <li><a href="{{ route('Course') }}">Khóa học xã hội</a></li>
+                            <li><a href="{{ route('Course') }}">Tiếng anh</a></li>
                         </ul>
                     </li>
                     <li><a href="./schedule.html">Mở rộng</a></li>
-                    <li><a href="./blog.html">Giới thiệu</a></li>
+                    <li><a href="{{ route('Introduce') }}">Giới thiệu</a></li>
                     @if (Auth::user())
                         <li>
                             <a href="{{ route('dashboard') }}">Admin</a>
@@ -25,7 +25,8 @@
                     @endif
                 </ul>
             </nav>
-            <a href="#" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Khóa học đã đăng ký</a>
+            <a href="{{ route('SignUp')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Đăng ký</a>
+            <a href="{{ route('SignIn')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Đăng nhập</a>
         </div>
         <div id="mobile-menu-wrap"></div>
     </div>
