@@ -16,4 +16,12 @@ class RegisInfo extends Model
         'student_id',
         'money',
     ];
+
+    public function subjects(){
+    	return $this->belongsTo(Subject::class,'subjects_id');
+    }
+
+    public function student(){
+    	return $this->belongsTo(Student::class,'student_id');
+    }
 }
