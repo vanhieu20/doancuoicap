@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('themes/clients/css/magnific-popup.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('themes/clients/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('themes/clients/css/style.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('themes/clients/css/style1.css') }}" type="text/css">
 </head>
 
 <body>
