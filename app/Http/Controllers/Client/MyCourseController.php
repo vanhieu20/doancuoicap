@@ -7,11 +7,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class SignUpController extends Controller
+class MyCourseController extends Controller
 {
-    public function SignUp()
+    public function MyCourse()
     {
-        return view('client.pages.SignUp');
+    	return view('client.pages.MyCourse');
     }
 
     public function storeSignUp(Request $request, User $user)

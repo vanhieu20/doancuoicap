@@ -8,7 +8,7 @@
                     <div class="hero-text">
                         <span> Đăng ký nhanh, học nhanh</span>
                         <h2>Welcome<br /> Học nhanh</h2>
-                        <a href="#" class="primary-btn">Tìm đăng ký ngay</a>
+                        <a href="{{ route('SignUpIn') }}" class="primary-btn">Tìm đăng ký ngay</a>
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -27,19 +27,17 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="si-pic">
-                                    <img src="{{ asset('themes/clients/img/speakers/speaker-1.jpg') }}" alt="">
+                                    <img src="{{ asset('themes/clients/img/Toan.jpg') }}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="si-text">
                                     <div class="si-title">
-                                        <h4>Jayden Gill</h4>
-                                        <span>Speaker</span>
+                                        <h4>Toán giải tích</h4>
+                                        <span>Jayden Gill</span>
                                     </div>
                                     <div class="si-social">
-                                        <a href="{{ route('subjects') }}"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="{{ route('subjects') }}"><i>Xem</i></a>
                                     </div>
                                     <p>Businesses often become known today through effective marketing. The marketing
                                         may be in the form of a regular news item or half column society news in the
@@ -54,19 +52,17 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="si-pic">
-                                    <img src="{{ asset('themes/clients/img/speakers/speaker-2.jpg') }}" alt="">
+                                    <img src="{{ asset('themes/clients/img/Toeic.jpg') }}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="si-text">
                                     <div class="si-title">
-                                        <h4>Mary Jane</h4>
-                                        <span>Speaker</span>
+                                        <h4>Tiếng anh </h4>
+                                        <span>Mary Jane</span>
                                     </div>
                                     <div class="si-social">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i>Xem</i></a>
                                     </div>
                                     <p>Businesses often become known today through effective marketing. The marketing
                                         may be in the form of a regular news item or half column society news in the
@@ -81,19 +77,17 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="si-pic">
-                                    <img src="{{ asset('themes/clients/img/speakers/speaker-3.jpg') }}" alt="">
+                                    <img src="{{ asset('themes/clients/img/Hoa.jpg') }}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="si-text">
                                     <div class="si-title">
-                                        <h4>Jack Human</h4>
-                                        <span>Manager</span>
+                                        <h4>Hóa cấp tốc</h4>
+                                        <span>Jack Human</span>
                                     </div>
                                     <div class="si-social">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i>Xem</i></a>
                                     </div>
                                     <p>Businesses often become known today through effective marketing. The marketing
                                         may be in the form of a regular news item or half column society news in the
@@ -108,19 +102,17 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="si-pic">
-                                    <img src="{{ asset('themes/clients/img/speakers/speaker-4.jpg') }}" alt="">
+                                    <img src="{{ asset('themes/clients/img/Su.jpg') }}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="si-text">
                                     <div class="si-title">
-                                        <h4>Sara Brudt</h4>
-                                        <span>Speaker</span>
+                                        <h4>Sử 12</h4>
+                                        <span>Sara Brudt</span>
                                     </div>
                                     <div class="si-social">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i>Xem</i></a>
                                     </div>
                                     <p>Businesses often become known today through effective marketing. The marketing
                                         may be in the form of a regular news item or half column society news in the
@@ -135,19 +127,17 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="si-pic">
-                                    <img src="{{ asset('themes/clients/img/speakers/speaker-5.jpg') }}" alt="">
+                                    <img src="{{ asset('themes/clients/img/Sinh.jpg') }}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="si-text">
                                     <div class="si-title">
-                                        <h4>Emma Sandoval </h4>
-                                        <span>CEO</span>
+                                        <h4>Sinh chuyên sâu</h4>
+                                        <span>Emma Sandoval</span>
                                     </div>
                                     <div class="si-social">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i>Xem</i></a>
                                     </div>
                                     <p>Businesses often become known today through effective marketing. The marketing
                                         may be in the form of a regular news item or half column society news in the
@@ -162,19 +152,17 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="si-pic">
-                                    <img src="{{ asset('themes/clients/img/speakers/speaker-6.jpg') }}" alt="">
+                                    <img src="{{ asset('themes/clients/img/Ly.jpg') }}" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="si-text">
                                     <div class="si-title">
-                                        <h4>Harriet Freeman</h4>
-                                        <span>Marketing Manager</span>
+                                        <h4>Lý</h4>
+                                        <span>Harriet Freeman</span>
                                     </div>
                                     <div class="si-social">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#"><i>Xem</i></a>
                                     </div>
                                     <p>Businesses often become known today through effective marketing. The marketing
                                         may be in the form of a regular news item or half column society news in the

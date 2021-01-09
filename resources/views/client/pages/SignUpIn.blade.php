@@ -6,7 +6,11 @@
         <div class="card">
             <div class="login-box">
                 @include('client.layouts.notification')
-                <div class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Đăng nhập</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Đăng ký</label>
+                <div class="login-snip">
+                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+                    <label for="tab-1" class="tab">Đăng nhập</label>
+                    <input id="tab-2" type="radio" name="tab" class="sign-up">
+                    <label for="tab-2" class="tab">Đăng ký</label>
                     <div class="login-space">
                         <div class="login">
                             <form action="{{ route('login') }}" id="form-login" method="POST">

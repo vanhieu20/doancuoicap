@@ -25,7 +25,11 @@
                     @endif
                 </ul>
             </nav>
-            <a href="{{ route('SignUp')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Đăng ký</a>
+            @if(Auth::user())
+                <a href="{{ route('MyCourse')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Khóa học đã đăng ký</a>
+            @else
+                <a href="{{ route('SignUp')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Đăng ký/Đăng nhập</a>
+            @endif
         </div>
         <div id="mobile-menu-wrap"></div>
     </div>
