@@ -36,60 +36,29 @@
                                             <th data-sortable="false">Tháo tác</th>
                                         </tr>
                                     </thead>
-                                    <style type="text/css">
-                                        .tags {
-  display: inline;
-  position: relative;
-}
-
-.tags:hover:after {
-  background: #333;
-  background: rgba(0, 0, 0, .8);
-  border-radius: 5px;
-  bottom: -34px;
-  color: #fff;
-  content: attr(gloss);
-  left: 20%;
-  padding: 5px 15px;
-  position: absolute;
-  z-index: 98;
-}
-
-.tags:hover:before {
-  border: solid;
-  border-color: #333 transparent;
-  border-width: 0 6px 6px 6px;
-  bottom: -4px;
-  content: "";
-  /* left: 50%; */
-  position: absolute;
-  z-index: 99;
-}
-                                    </style>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Võ Văn Hiếu</td>
-                                            <td>Tiếng anh</td>
-                                            <td>500.000đ</td>
-                                            <td class="label label-info text-center">Chưa thanh toán</td>
-                                            <td>
-                                                <a href="#" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                                                <a href="#" class="btn btn-success tags" gloss="Duyệt đơn"><i class="fa fa-check-square"></i></a>
-                                            </td>
-                                        </tr>
-                                        {{-- @foreach($subject as $key => $row)
+                                        @foreach($regisInfo as $key => $row)
                                             <tr>
                                                 <td tabindex="0" class="sorting_1">{{ $key + 1 }}</td>
-                                                <td><img height="100px" width="max-content" src="{{ pare_url_file($row->image) }}" alt=""></td>
-                                                <td>{{ $row->course->name }}</td>
-                                                <td>{{ $row->name }}</td>
                                                 <td>
-                                                    <a href="{{ route('subject.update',$row->id) }}" class="btn btn-success"><i class="fa fa-edit"> Sửa</i></a>
-                                                    <button type="button" class="btn btn-danger del_course" data-toggle="modal" data-id="{{ $row->id }}" data-target="#modal-danger">Xóa</button>
+                                                    <a data-toggle="tooltip" data-placement="left" title="Thông tin người đăng kí" data-id="{{ $row->student }}" href="{{ route('listRegis.information',$row->id) }}" class="information">{{ $row->student->fullName }}</a>
+                                                </td>
+                                                <td>
+                                                    <a data-toggle="tooltip" data-placement="left" title="Thông tin khóa học" data-id="{{ $row->subject }}" href="{{ route('listRegis.mySubject',$row->id) }}" class="subject">{{ $row->subjects->name }}</a>
+                                                </td>
+                                                <td>{{ number_format($row->money,0,',','.') }} VNĐ</td>
+                                                <td class="text-center">
+                                                    @if ($row->status == 0)
+                                                        <span class="alert alert-danger p-1">Chưa thanh toán</span>
+                                                    @else
+                                                        <span class="alert alert-success p-1">Đã thanh toán</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="#" data-toggle="tooltip" data-placement="left" class="btn btn-success check_status" data-status="{{ $row->status }}" data-id="{{ $row->id }}" title="Phê duyệt!"><i class="fa fa-check-square"></i></a>
                                                 </td>
                                             </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -100,55 +69,157 @@
         </section>
     </div>
 </div>
+
+<!-- modal show thông tin người đăng kí khóa học -->
+<div id="myModalInfomation" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h4 class="modal-title text-left">Thông tin người đăng ký</h4>
+            </div>
+            <div class="modal-body" id="md_content_infomation">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal show Khóa học -->
+<div id="mySubject" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h4 class="modal-title text-left">Thông tin khóa học</h4>
+            </div>
+            <div class="modal-body" id="md_content_my_subject">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @stop
 @section('script')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="sweetalert2.all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
 <script>
-    // $(".del_course").click(function(){
-    //     id = $(this).data('id');
-    //     Swal.fire({
-    //         title: 'Bạn có chắc chắn?',
-    //         text: 'Bạn sẽ không thể hoàn nguyên điều này!',
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: 'Vâng, xóa nó đi!',
-    //         cancelButtonText: 'Hủy',
-    //     }).then((result) => {
-    //         if (result.value == true) {
-    //             $.ajax({
-    //                 url: '/admin/subject/' + id,
-    //                 type: 'get',
-    //                 data: {
-    //                     'id': id,
-    //                 },
-    //                 success: function(res) {
-    //                     if (res.warning) {
-    //                         Swal.fire({
-    //                             icon: 'error',
-    //                             title: 'Thông báo',
-    //                             text: res.warning,
-    //                             confirmButtonText: 'Xác nhận',
-    //                         });
-    //                     }
-    //                     if (res.success) {
-    //                         Swal.fire({
-    //                             icon: 'success',
-    //                             title: 'Thông báo',
-    //                             text: res.success,
-    //                             confirmButtonText: 'Xác nhận',
-    //                         }).then((result) => {
-    //                             location.reload();
-    //                         });
-    //                     }
-    //                 }
-    //             });
-    //         }
-    //     });
-    // });
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    $('.check_status').click(function(){
+        $this = $(this);
+        id = $this.data('id');
+        status = $this.data('status');
+        var select1 = '';
+        if(status == 1){
+            select1 = 'selected = "selected"';
+        }
+        var select0 = '';
+        if(status == 0){
+            select0 = 'selected = "selected"';
+        }
+        $.confirm({
+            icon: 'fas fa-check-circle',
+            theme: 'modern',
+            title: 'Xin chào',
+            content: '' +
+                '<form class="formName">' +
+                '<div class="form-group">' +
+                '<label>Xác nhận môn học này đã được thanh toán chưa nào?</label>' +
+                '<select id="status_work" name="status" class="form-control">' +
+                    '<option value="0" '+select0+'>Chưa thanh toán</option>'+
+                    '<option value="1" '+select1+'>Đã thanh toán</option>'+
+                '</select>' +
+                '</div>' +
+                '</form>',
+            // closeIcon: true,
+            animation: 'scale',
+            type: 'green',
+            buttons:{
+                confirm: {
+                    text: 'Xác nhận',
+                    btnClass: 'btn-blue',
+                    action: function () {
+                        var statusWork = $('#status_work').val();
+                        return $.ajax({
+                            url: "/admin/list-register",
+                            type: 'get',
+                            data : {
+                                'id_regis' : id,
+                                'status' : statusWork,
+                            },
+                        }).done(function(res){
+                            if(res.success){
+                                // $.alert(res.success);
+                                $.confirm({
+                                    icon: 'fa fa-smile-o',
+                                    theme: 'modern',
+                                    animation: 'scale',
+                                    type: 'blue',
+                                    closeIcon: true,
+                                    title: 'Thành công',
+                                    content: res.success,
+                                    buttons:{
+                                        confirm: {
+                                            text: 'Đồng ý',
+                                            btnClass: 'btn-blue',
+                                            action: function () {
+                                                location.reload(true);
+                                            },
+                                        },
+                                    },
+                                });
+                            }
+                        });
+                    },
+                },
+                Hủy: function(){
+
+                },
+            },
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $(".information").click(function (event) {
+            event.preventDefault();
+            let $this = $(this);
+            let url = $this.attr('href');
+            $("#myModalInfomation").modal('show');
+            $.ajax({
+                url: url,
+            }).done(function (result) {
+                if(result){
+                    $("#md_content_infomation").html('').append(result);
+                }
+            });
+        });
+    })
+
+    $(function () {
+        $(".subject").click(function (event) {
+            event.preventDefault();
+            let $this = $(this);
+            let url = $this.attr('href');
+            $("#mySubject").modal('show');
+            $.ajax({
+                url: url,
+            }).done(function (result) {
+                if(result){
+                    $("#md_content_my_subject").html('').append(result);
+                }
+            });
+        });
+    })
 </script>
 @stop
 

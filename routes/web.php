@@ -61,14 +61,16 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckLogin'], function () {
         Route::get('/{update}',[SubjectController::class, 'destroy'])->name('subject.destroy');
     });
 
-    // khóa học
+    // Danh sách đăng ký khóa học
     Route::group(['prefix' => 'list-register'], function () {
-        Route::get('/',[RegisInfoController::class, 'index'])->name('listRegis'); // trang danh muc khoa hoc admin
+        Route::get('/',[RegisInfoController::class, 'index'])->name('listRegis'); // trang khoa hoc admin
         Route::get('/create',[RegisInfoController::class, 'create'])->name('listRegis.create');
         Route::post('/create',[RegisInfoController::class, 'store']);
         Route::get('/{update}/edit',[RegisInfoController::class, 'update'])->name('listRegis.update');
         Route::post('/{update}/edit',[RegisInfoController::class, 'edit']);
         Route::get('/{update}',[RegisInfoController::class, 'destroy'])->name('listRegis.destroy');
+        Route::get('/{update}/information',[RegisInfoController::class, 'information'])->name('listRegis.information'); // show modal người đăng ký
+        Route::get('/{update}/mySubject',[RegisInfoController::class, 'mySubject'])->name('listRegis.mySubject'); // show modal khóa học
     });
 });
 

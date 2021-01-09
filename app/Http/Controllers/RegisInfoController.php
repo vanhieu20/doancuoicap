@@ -12,9 +12,23 @@ class RegisInfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(RegisInfo $regisInfo, Request $request)
     {
-        return view('admins.listRegis.index');
+        $regisInfo = $regisInfo->get();
+        if($request->ajax())
+        {
+            $listRegis = $regisInfo->where([
+                'id' => $request->id_regis,
+            ])->first();
+
+            $data = [
+                'status' => $request->status,
+            ];
+            RegisInfo::where('id', $request->id_regis)->update($data);
+
+            return response()->json(['success'=>'Cập nhật trạng thái thành công!']);
+        }
+        return view('admins.listRegis.index',compact('regisInfo'));
     }
 
     /**
@@ -81,5 +95,28 @@ class RegisInfoController extends Controller
     public function destroy(RegisInfo $regisInfo)
     {
         //
+    }
+
+    public function information(Request $request,$id,RegisInfo $regisInfo){
+        if($request->ajax())
+        {
+            $information = $regisInfo->where('regis_infos.id',$id)
+            ->leftJoin('students','regis_infos.student_id', '=', 'students.id' )
+            ->select('students.*')->first();
+            $html = view('admins.listRegis.information',compact('information'))->render();
+            return \response()->json($html);
+        }
+    }
+
+    public function mySubject(Request $request,$id,RegisInfo $regisInfo){
+        if($request->ajax())
+        {
+            $subjects = $regisInfo->where('regis_infos.id',$id)
+            ->leftJoin('subjects','regis_infos.subjects_id', '=', 'subjects.id')
+            ->leftJoin('courses','subjects.counrses_id', '=','courses.id')
+            ->select('subjects.*','courses.name as nameCourse')->first();
+            $html = view('admins.listRegis.mySubject',compact('subjects'))->render();
+            return \response()->json($html);
+        }
     }
 }
