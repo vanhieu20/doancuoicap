@@ -12,4 +12,9 @@ class HomeController extends Controller
     {
         return view('client.index');
     }
+
+    public function Pages404()
+    {
+        return view('404.frontend');
+    }
 }

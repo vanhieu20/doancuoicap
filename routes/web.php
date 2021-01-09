@@ -35,9 +35,12 @@ use App\Http\Controllers\Client\SignInController;
 
 //Login
 
-Route::get('/authenticate/login',[UserController::class,'viewLogin'])->name('login');
+Route::get('/404',[HomeController::class,'Pages404'])->name('404');
+
+
+Route::get('/authenticate/login',[UserController::class,'viewLogin'])->name('login_admin');
 Route::post('/authenticate/login',[UserController::class,'login']);
-Route::get('/authenticate/logout',[UserController::class,'logout'])->name('logout');
+Route::get('/authenticate/logout',[UserController::class,'logout'])->name('logout_admin');
 
 Route::group(['prefix' => 'admin','middleware' => 'CheckLogin'], function () {
     Route::get('/',[DashboardController::class, 'index'])->name('dashboard'); // trang chur admin
