@@ -72,13 +72,20 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckLogin'], function () {
         Route::get('/{update}/information',[RegisInfoController::class, 'information'])->name('listRegis.information'); // show modal người đăng ký
         Route::get('/{update}/mySubject',[RegisInfoController::class, 'mySubject'])->name('listRegis.mySubject'); // show modal khóa học
     });
+
+    Route::group(['prefix' => 'account'], function () {
+        Route::get('/',[UserController::class,'index'])->name('account');
+        Route::get('/{account}',[UserController::class,'changeStatus']);
+    });
 });
 
 
 //--------------------CLIENT-----------------------
-Route::get('/',[HomeController::class, 'index']);
+Route::get('/',[HomeController::class, 'index'])->name('client');
 Route::get('/chi-tiet-mon-hoc',[SubjectsDetailController::class, 'subjects'])->name('subjects'); //vào trang chi tiết môn học
 Route::get('/chi-tiet-khoa-hoc',[CourseDetailController::class, 'Course'])->name('Course'); //vào chi tiết từng khóa học
-Route::get('/dang-ky-tai-khoan',[SignUpController::class, 'SignUp'])->name('SignUp'); //đăng ký tài khoản
-Route::get('/dang-nhap-tai-khoan',[SignInController::class, 'SignIn'])->name('SignIn'); //đăng nhập tài khoản
+Route::get('/dang-ky-tai-khoan',[SignUpController::class, 'SignUp'])->name('SignUp'); // view đăng ký tài khoản
+Route::post('/dang-ky-tai-khoan',[SignUpController::class, 'storeSignUp']); //đăng ký tài khoản
+Route::post('/dang-nhap-tai-khoan',[SignInController::class, 'Login'])->name('login'); //đăng nhập tài khoản
+Route::get('/dang-xuat-tai-khoan',[SignInController::class, 'Logout'])->name('logout'); //đăng xuất tài khoản
 Route::get('/gioi-thieu',[IntroduceController::class, 'Introduce'])->name('Introduce');

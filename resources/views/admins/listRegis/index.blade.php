@@ -55,7 +55,9 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="#" data-toggle="tooltip" data-placement="left" class="btn btn-success check_status" data-status="{{ $row->status }}" data-id="{{ $row->id }}" title="Phê duyệt!"><i class="fa fa-check-square"></i></a>
+                                                    @if ($row->status == 0)
+                                                        <a href="#" data-toggle="tooltip" data-placement="left" class="btn btn-success check_status" data-status="{{ $row->status }}" data-id="{{ $row->id }}" title="Phê duyệt!"><i class="fa fa-check-square"></i></a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

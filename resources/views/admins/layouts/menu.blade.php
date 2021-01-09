@@ -47,10 +47,10 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="{{ route('account') }}" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-                Thông tin người đăng kí
+                Quản lý tài khoản
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

@@ -50,6 +50,7 @@
     <script src="{{ asset('themes/clients/js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('themes/clients/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('themes/clients/js/main.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>

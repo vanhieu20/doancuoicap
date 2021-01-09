@@ -1,7 +1,7 @@
 <header class="header-section">
     <div class="container">
         <div class="logo">
-            <a href="./index.html">
+            <a href="/">
                 <img src="{{ asset('themes/clients/img/logo.png') }}" alt="">
             </a>
         </div>
@@ -26,7 +26,6 @@
                 </ul>
             </nav>
             <a href="{{ route('SignUp')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Đăng ký</a>
-            <a href="{{ route('SignIn')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Đăng nhập</a>
         </div>
         <div id="mobile-menu-wrap"></div>
     </div>
