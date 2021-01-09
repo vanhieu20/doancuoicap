@@ -69,7 +69,7 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Phạm Thanh Tươi</td>
+                                            <td>Võ Văn Hiếu</td>
                                             <td>Tiếng anh</td>
                                             <td>500.000đ</td>
                                             <td class="label label-info text-center">Chưa thanh toán</td>
