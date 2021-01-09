@@ -18,7 +18,7 @@
                     </li>
                     <li><a href="./schedule.html">Mở rộng</a></li>
                     <li><a href="{{ route('Introduce') }}">Giới thiệu</a></li>
-                    @if (Auth::user())
+                    @if (Auth::user()->role == 1)
                         <li>
                             <a href="{{ route('dashboard') }}">Admin</a>
                         </li>

@@ -8,7 +8,7 @@
                     <div class="hero-text">
                         <span> Đăng ký nhanh, học nhanh</span>
                         <h2>Welcome<br /> Học nhanh</h2>
-                        <a href="{{ route('SignUpIn') }}" class="primary-btn">Tìm đăng ký ngay</a>
+                        <a href="#" class="primary-btn">Tìm đăng ký ngay</a>
                     </div>
                 </div>
                 <div class="col-lg-5">

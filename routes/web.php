@@ -13,6 +13,7 @@ use App\Http\Controllers\Client\SignUpInController;
 use App\Http\Controllers\Client\IntroduceController;
 use App\Models\Course;
 use App\Http\Controllers\Client\MyCourseController;
+use App\Http\Controllers\Client\SignInController;
 
 /*
 |--------------------------------------------------------------------------
