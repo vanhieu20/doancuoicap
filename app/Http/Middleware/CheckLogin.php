@@ -26,7 +26,7 @@ class CheckLogin
                 // return redirect()->route('login_admin')->with('warning','Tài khoản của bạn không có quyền truy cập');
             }
         }else{
-            return redirect()->route('login')->with('warning','Bạn cần đăng nhập để vào trang quản trị hệ thống');
+            return redirect()->route('login_admin')->with('warning','Bạn cần đăng nhập để vào trang quản trị hệ thống');
         }
     }
 }
