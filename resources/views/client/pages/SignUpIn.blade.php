@@ -31,7 +31,7 @@
                                     <input type="submit" class="button" value="Đăng nhập">
                                 </div>
                                 <div class="hr"></div>
-                                <div class="foot"> <a href="#">Quên mật khẩu?</a> </div>
+                                <div class="foot"> <a href="{{ route('forgotPassword') }}">Quên mật khẩu?</a> </div>
                             </form>
                         </div>
                         <div class="sign-up-form">

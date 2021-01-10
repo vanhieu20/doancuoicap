@@ -18,8 +18,9 @@ class CreateRegisInfosTable extends Migration
             $table->integer('subjects_id')->unsigned();
             $table->foreign('subjects_id')->references('id')->on('subjects');
             $table->integer('student_id')->unsigned();
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('users');
             $table->integer('money');
+            $table->integer('status');
             $table->timestamps();
         });
     }

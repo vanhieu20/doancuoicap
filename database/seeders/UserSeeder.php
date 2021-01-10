@@ -14,8 +14,10 @@ class UserSeeder extends Seeder
     public function run()
     {
         \DB::table('users')->insert([
-            'name' => 'Võ Văn Hiếu',
-            'email' => 'vvhieu.18i@cit.udn.vn',
+            'name' => 'Phạm Thanh Tươi',
+            'email' => 'tuoipt.99@gmail.com',
+            'phone' => '0975323376',
+            'address' => 'Quảng Nam',
             'password' => \Hash::make('admin123'),
         ]);
     }

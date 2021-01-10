@@ -101,8 +101,8 @@ class RegisInfoController extends Controller
         if($request->ajax())
         {
             $information = $regisInfo->where('regis_infos.id',$id)
-            ->leftJoin('students','regis_infos.student_id', '=', 'students.id' )
-            ->select('students.*')->first();
+            ->leftJoin('users','regis_infos.student_id', '=', 'users.id' )
+            ->select('users.*')->first();
             $html = view('admins.listRegis.information',compact('information'))->render();
             return \response()->json($html);
         }

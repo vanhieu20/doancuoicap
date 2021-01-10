@@ -9,11 +9,11 @@
             <nav class="mainmenu mobile-menu">
                 <ul>
                     <li class="active"><a href="/">Trang chủ</a></li>
-                    <li><a href="{{ route('Course') }}">Khóa học</a>
+                    <li><a href="">Khóa học</a>
                         <ul class="dropdown">
-                            <li><a href="{{ route('Course') }}">Khoa học tự nhiên</a></li>
-                            <li><a href="{{ route('Course') }}">Khóa học xã hội</a></li>
-                            <li><a href="{{ route('Course') }}">Tiếng anh</a></li>
+                            @foreach ($list_course as $item)
+                                <li><a href="{{ route('Course',$item->id) }}">{{ $item->name }}</a></li>
+                            @endforeach
                         </ul>
                     </li>
                     <li><a href="./schedule.html">Mở rộng</a></li>
@@ -21,14 +21,16 @@
                     @if (Auth::user())
                         @if (Auth::user()->role == 1)
                             <li>
-                                <a href="{{ route('dashboard') }}">Admin</a>
+                                <a href="{{ route('dashboard')}}" class="-btn"><i class="fa fa-ticket"></i>Dashboard</a>
                             </li>
                         @endif
                     @endif
                 </ul>
             </nav>
             @if(Auth::user())
-                <a href="{{ route('MyCourse')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Profile</a>
+                @if (Auth::user()->role == 3)
+                    <a href="{{ route('MyCourse')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Thông tin</a>
+                @endif
             @else
                 <a href="{{ route('SignUp')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Đăng ký/Đăng nhập</a>
             @endif

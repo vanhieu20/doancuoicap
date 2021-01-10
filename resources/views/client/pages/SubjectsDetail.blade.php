@@ -3,37 +3,71 @@
 
  <!-- About Section Begin -->
  <section class="about-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Something About Us</h2>
-                        <p class="f-para">There are several ways people can make money online. From selling products to advertising. In this article I am going to explain the concept of contextual advertising.</p>
-                        <p>First I will explain what contextual advertising is. Contextual advertising means the advertising of products on a website according to the content the page is displaying. For example if the content of a website was information on a Ford truck then the advertisements would be for Ford trucks for sale, or Ford servicing etc. It picks up the words on the page and displays ads that are similar to those words. Then when someone either performs an action or clicks on your page you will get paid.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="about-pic">
-                        <img src="{{ asset('themes/clients/img/Toan.jpg' ) }}" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-text">
-                        <h3>Toán giải tích</h3>
-                        <p>When I first got into the online advertising business, I was looking for the magical combination that would put my website into the top search engine rankings, catapult me to the forefront of the minds or individuals looking to buy my product, and generally make me rich beyond my wildest dreams! After succeeding in the business for this long, I’m able to look back on my old self with this kind of thinking and shake my head. </p>
-                        <ul>
-                            <li><span class="icon_check"></span> Write On Your Business Card</li>
-                            <li><span class="icon_check"></span> Advertising Outdoors</li>
-                            <li><span class="icon_check"></span> Effective Advertising Pointers</li>
-                            <li><span class="icon_check"></span> Kook 2 Directory Add Url Free</li>
-                        </ul>
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Chi tiết khóa học</h2>
                 </div>
             </div>
         </div>
-    </section>
+        @include('client.layouts.notification')
+        <div class="row">
+            <div class="col-8 detail_subjects">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="about-pic">
+                            <img src="{{ pare_url_file($detailSubject->image) }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-text">
+                            <h3>{{ $detailSubject->name }}</h3>
+                            <p> </p>
+                            <ul>
+                                <li><span class="icon_check"></span> Write On Your Business Card</li>
+                                <li><span class="icon_check"></span> Advertising Outdoors</li>
+                                <li><span class="icon_check"></span> Effective Advertising Pointers</li>
+                                <li><span class="icon_check"></span> Kook 2 Directory Add Url Free</li>
+                            </ul>
+                            <hr>
+                            <div class="si-social">
+                                @if ($checkRegis == '')
+                                    <a class="button_regis" href="{{ route('regis_subjects',$detailSubject->id) }}"><i>ĐĂNG KÝ HỌC</i></a>
+                                @else
+                                    <a class="button_regis_cancel" href="{{ route('cancel_regis_subjects',$detailSubject->id) }}"><i>HỦY ĐĂNG KÝ</i></a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <p class="f-para">{!! $detailSubject->content !!}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 related_subjects">
+                <h3>Các môn học liên quan</h3>
+                <div class="ex3">
+                    @if ($relatedSubjects)
+                        @foreach ($relatedSubjects as $item)
+                            <hr>
+                            <div class="post_item_with_thumb">
+                                <div class="post_thumb">
+                                    <a href="{{ route('subjects',$item->id) }}">
+                                        <img src="{{ pare_url_file($item->image) }}" alt="" >
+                                    </a>
+                                </div>
+                                <div class="post_content ml-3">
+                                    <a class="name" href="{{ route('subjects',$item->id) }}">{{ $item->name }}</a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- About Section End -->
 
 @stop

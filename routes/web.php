@@ -86,11 +86,20 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckLogin'], function () {
 
 //--------------------CLIENT-----------------------
 Route::get('/',[HomeController::class, 'index'])->name('client');
-Route::get('/chi-tiet-mon-hoc',[SubjectsDetailController::class, 'subjects'])->name('subjects'); //vào trang chi tiết môn học
-Route::get('/chi-tiet-khoa-hoc',[CourseDetailController::class, 'Course'])->name('Course'); //vào chi tiết từng khóa học
+Route::get('/chi-tiet-mon-hoc/{subjects}',[SubjectsDetailController::class, 'subjects'])->name('subjects'); //vào trang chi tiết môn học
+Route::get('/dang-ki-mon-hoc/{subjects}',[SubjectsDetailController::class, 'regis_subjects'])->name('regis_subjects'); //vào trang chi tiết môn học
+Route::get('/huy-dang-ki-mon-hoc/{subjects}',[SubjectsDetailController::class, 'cancel_regis_subjects'])->name('cancel_regis_subjects'); //vào trang chi tiết môn học
+Route::get('/chi-tiet-khoa-hoc/{course}',[CourseDetailController::class, 'Course'])->name('Course'); //vào chi tiết từng khóa học
 Route::get('/dang-ky-tai-khoan',[SignUpInController::class, 'SignUp'])->name('SignUp'); // view đăng ký tài khoản
 Route::post('/dang-ky-tai-khoan',[SignUpInController::class, 'storeSignUp']); //đăng ký tài khoản
 Route::post('/dang-nhap-tai-khoan',[SignInController::class, 'Login'])->name('login'); //đăng nhập tài khoản
 Route::get('/dang-xuat-tai-khoan',[SignInController::class, 'Logout'])->name('logout'); //đăng xuất tài khoản
+
+Route::get('/quen-mat-khau',[SignInController::class, 'viewForgotPassword'])->name('forgotPassword'); //quên mật khẩu
+Route::post('/quen-mat-khau',[SignInController::class, 'sendCodeResetPassword']); //quên mật khẩu
+Route::get('/dat-lai-mat-khau',[SignInController::class, 'resetPassword'])->name('get.link.reset.password');
+Route::post('/dat-lai-mat-khau',[SignInController::class, 'changeNewPassword']);
+
+
 Route::get('/gioi-thieu',[IntroduceController::class, 'Introduce'])->name('Introduce');
 Route::get('/khoa-hoc-cua-toi',[MyCourseController::class, 'MyCourse'])->name('MyCourse');
