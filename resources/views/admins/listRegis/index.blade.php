@@ -41,7 +41,7 @@
                                             <tr>
                                                 <td tabindex="0" class="sorting_1">{{ $key + 1 }}</td>
                                                 <td>
-                                                    <a data-toggle="tooltip" data-placement="left" title="Thông tin người đăng kí" data-id="{{ $row->student }}" href="{{ route('listRegis.information',$row->id) }}" class="information">{{ $row->student->fullName }}</a>
+                                                    <a data-toggle="tooltip" data-placement="left" title="Thông tin người đăng kí" data-id="{{ $row->student }}" href="{{ route('listRegis.information',$row->id) }}" class="information">{{ $row->student->name }}</a>
                                                 </td>
                                                 <td>
                                                     <a data-toggle="tooltip" data-placement="left" title="Thông tin khóa học" data-id="{{ $row->subject }}" href="{{ route('listRegis.mySubject',$row->id) }}" class="subject">{{ $row->subjects->name }}</a>

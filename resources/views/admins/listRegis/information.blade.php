@@ -14,7 +14,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ $information->fullName }}</td>
+                                <td>{{ $information->name }}</td>
                                 <td>{{ $information->phone }}</td>
                                 <td>{{ $information->email }}</td>
                                 <td>{{ $information->address }}</td>

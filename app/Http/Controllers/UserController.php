@@ -52,7 +52,12 @@ class UserController extends Controller
         $data = $request->only('email', 'password');
         if(Auth::attempt($data)){
             if(Auth::user()->status == 1){
-                return redirect()->route('dashboard');
+                if(Auth::user()->role == 1){
+                    return view('admins.index');
+                    // return redirect()->route('dashboard');
+                }else{
+                    return redirect()->back()->with('danger', 'Tài khoản này không đủ quyền.Mời bạn kiểm tra lại');
+                }
             }else{
                 return redirect()->back()->with('danger', 'Tài khoản đã bị khóa');
             }
