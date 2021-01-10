@@ -23,8 +23,8 @@ class CreateUsersTable extends Migration
             $table->text('address');
             $table->tinyInteger('role');
             $table->tinyInteger('status');
-            $table->string('code');
-            $table->string('time_code');
+            $table->string('code')->nullable();
+            $table->string('time_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
