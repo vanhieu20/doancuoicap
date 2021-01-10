@@ -28,7 +28,7 @@
                 </ul>
             </nav>
             @if(Auth::user())
-                <a href="{{ route('MyCourse')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Khóa học đã đăng ký</a>
+                <a href="{{ route('MyCourse')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Profile</a>
             @else
                 <a href="{{ route('SignUp')}}" class="primary-btn top-btn"><i class="fa fa-ticket"></i>Đăng ký/Đăng nhập</a>
             @endif
