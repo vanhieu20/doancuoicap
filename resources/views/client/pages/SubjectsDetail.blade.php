@@ -25,10 +25,10 @@
                             <h3>{{ $detailSubject->name }}</h3>
                             <p> </p>
                             <ul>
-                                <li><span class="icon_check"></span> Write On Your Business Card</li>
-                                <li><span class="icon_check"></span> Advertising Outdoors</li>
-                                <li><span class="icon_check"></span> Effective Advertising Pointers</li>
-                                <li><span class="icon_check"></span> Kook 2 Directory Add Url Free</li>
+                                <!-- <li><span class="icon_check"></span> Write On Your Business Card</li> -->
+                                <li><span class="icon_check"></span>Học phí: {{$detailSubject->money}}</li>
+                                <li><span class="icon_check"></span>Ngày bắt đầu: {{$detailSubject->date_start}}</li>
+                                <li><span class="icon_check"></span>Ngày kết thuc: {{$detailSubject->date_end}}</li>
                             </ul>
                             <hr>
                             <div class="si-social">

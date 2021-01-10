@@ -101,5 +101,8 @@ Route::get('/dat-lai-mat-khau',[SignInController::class, 'resetPassword'])->name
 Route::post('/dat-lai-mat-khau',[SignInController::class, 'changeNewPassword']);
 
 
+Route::post('/cap-nhat-thong-tin-ca-nhan/{id}',[SignInController::class, 'update_infomation'])->name('update_infomation');
+
+
 Route::get('/gioi-thieu',[IntroduceController::class, 'Introduce'])->name('Introduce');
 Route::get('/khoa-hoc-cua-toi',[MyCourseController::class, 'MyCourse'])->name('MyCourse');

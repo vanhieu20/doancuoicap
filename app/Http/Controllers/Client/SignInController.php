@@ -113,4 +113,19 @@ class SignInController extends Controller
 
         return redirect()->route('SignUp')->with('success','Mật khẩu đã được thay đổi thành công.');
     }
+
+    public function update_infomation(Request $request,User $user,$id)
+    {
+        $data = [
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'address' => $request->address,
+        ];
+        if($request->password != '')
+        {
+            $data['password'] = Hash::make($request->password);
+        }
+        $user->find($id)->update($data);
+        return redirect()->back()->with('success','Cập nhật thông tin thành công');
+    }
 }

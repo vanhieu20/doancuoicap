@@ -1514,7 +1514,8 @@ ol {
 .speaker-item .si-pic img {
     min-width: 100%;
     border-radius: 2px;
-}
+    height: 300px;
+    }
 
 .speaker-item .si-text .si-title {
     margin-bottom: 28px;

@@ -8,6 +8,7 @@ use App\Models\Student;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class SubjectsDetailController extends Controller
 {
@@ -23,7 +24,6 @@ class SubjectsDetailController extends Controller
                 'student_id' => Auth::user()->id,
                 ])->first();
             }
-        // dd($checkRegis);
         return view('client.pages.SubjectsDetail',compact('detailSubject','relatedSubjects','checkRegis'));
     }
 
@@ -48,7 +48,16 @@ class SubjectsDetailController extends Controller
             if($checkRegis){
                 return redirect()->back()->with('danger','Bạn đã đăng kí khoa học này rồi.Vui lòng kiểm tra lại.');
             }else{
-                $regisInfo->create($data_regis);
+                $regisSuccess = $regisInfo->create($data_regis);
+
+                $data = [
+                    'regisSuccess' => $regisSuccess,
+                ];
+
+                Mail::send('client.pages.sendMailPay',$data, function($message) use ($user){
+                    $message->to($user->email, 'Xác nhận đăng kí khóa học')->subject('Đăng ký khóa học');
+                });
+
                 return redirect()->back()->with('success','Đăng ký thành công');
             }
         }else{
